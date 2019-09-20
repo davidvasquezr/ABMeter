@@ -1,0 +1,1 @@
+C:\Users\jhoan.gamarra\Documents\Visual Studio 2017\Projects\ABMeter\ABMeter\ABMeter\bin\Debug\netstandard2.0\ABMeter.dll

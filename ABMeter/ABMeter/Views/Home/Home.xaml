@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ABMeter.Views.Home.Home" Title="ABMeter"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps">
+    <ContentPage.Content>
+        <ScrollView>    
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout Padding="5, 10, 5, 0" Spacing="5" VerticalOptions="Start">
+                    <Label Text="Origen (Mi ubicación)" FontAttributes="Bold" FontSize="20" />
+                    <Label x:Name="latOrigen" />
+                    <Label x:Name="lonOrigen" />
+                </StackLayout>
+                <StackLayout Padding="5, 10, 5, 0" Spacing="5" VerticalOptions="Center">
+                    <Label Text="Destino" FontAttributes="Bold" FontSize="20" />
+                    <!--<Entry x:Name="latDestino" Placeholder="Latitud" />
+                    <Entry x:Name="lonDestino" Placeholder="Longitud" />-->
+                    <Label x:Name="latDestino" Text="0" />
+                    <Label x:Name="lonDestino" Text="0" />
+                </StackLayout>
+                <StackLayout Padding="5, 10, 5, 0">
+                    <Button x:Name="btn" Text="Iniciar" Clicked="Btn_Clicked" />
+                </StackLayout>
+                <StackLayout Padding="0,5,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Label x:Name="lblDistance" />
+                    <maps:Map x:Name="map" HeightRequest="200"
+                        VerticalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
