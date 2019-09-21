@@ -15,9 +15,10 @@ namespace ABMeter.Views.Home
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Home : ContentPage
 	{
-        bool llego = true;
+        bool isStart;
+        public DateTime TimeStart { get; set; }
 
-		public Home()
+        public Home()
 		{
             CustomNavigationPage.SetTitleMargin(this, new Thickness(0, 0, 0, 0));
             InitializeComponent ();
@@ -63,67 +64,85 @@ namespace ABMeter.Views.Home
                 map.Pins.Add(pin);
             };
 
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-            {
-                // Do something
-                 CalculateLocation();
-                
-                return llego; // True = Repeat again, False = Stop the timer
-            });
+            //Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            //{
+            //    // Do something
+            //    CalculateLocation();
+
+            //    return llego; // True = Repeat again, False = Stop the timer
+            //});
         }
 
         
         private async void CalculateLocation()
         {
-            try
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                var location = await Geolocation.GetLocationAsync(request);
-
-                if (location != null)
+            if (isStart)
+            {   
+                try
                 {
-                    //Obtiene cordenadas
-                    latOrigen.Text = location.Latitude.ToString();
-                    lonOrigen.Text = location.Longitude.ToString();
-                    Location origin = new Location(location.Latitude, location.Longitude);
-                    Location destination = new Location(Convert.ToDouble(latDestino.Text), Convert.ToDouble(lonDestino.Text));
-                    //Calcula las cordenadas
-                    double kms = Location.CalculateDistance(origin, destination, DistanceUnits.Kilometers);
-                    lblDistance.Text = kms.ToString();
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    var location = await Geolocation.GetLocationAsync(request);
+
+                    if (location != null)
+                    {
+                        //Obtiene cordenadas
+                        latOrigen.Text = location.Latitude.ToString();
+                        lonOrigen.Text = location.Longitude.ToString();
+                        Location origin = new Location(location.Latitude, location.Longitude);
+                        Location destination = new Location(Convert.ToDouble(latDestino.Text), Convert.ToDouble(lonDestino.Text));
+
+                        //Calcula las cordenadas
+                        double kms = Location.CalculateDistance(origin, destination, DistanceUnits.Kilometers);
+                        lblDistance.Text = kms.ToString("0.000");
+                        if (kms < 0.01)
+                        {
+                            //Quiere decir que llego lo mas cercano posible al punto
+                            isStart = false;
+                            await this.DisplayAlert("Llegaste", "Que bien perro. " + DateTime.Now.TimeOfDay, "Cerrar");
+                        }
+                    }
+                }
+                catch (FeatureNotSupportedException fnsEx)
+                {
+                    // Handle not supported on device exception
+                }
+                catch (FeatureNotEnabledException fneEx)
+                {
+                    // Handle not enabled on device exception
+                }
+                catch (PermissionException pEx)
+                {
+                    // Handle permission exception
+                }
+                catch (Exception ex)
+                {
+                    // Unable to get location
                 }
             }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                // Handle not supported on device exception
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                // Handle not enabled on device exception
-            }
-            catch (PermissionException pEx)
-            {
-                // Handle permission exception
-            }
-            catch (Exception ex)
-            {
-                // Unable to get location
-            }
 
-            llego = true;
         }
 
         private void Btn_Clicked(object sender, EventArgs e)
         {
+            isStart = true;
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                // Do something
+                CalculateLocation();
+
+                return isStart; // True = Repeat again, False = Stop the timer
+            });
+
             //var location = new Location(Convert.ToDouble("7.1062345"), Convert.ToDouble("-73.1051232"));
             //var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
 
             //Map.OpenAsync(location, options);
 
-            //var location = new Location(Convert.ToDouble(lat.Text), Convert.ToDouble(lon.Text));
-            //var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
+            var location = new Location(Convert.ToDouble(latDestino.Text), Convert.ToDouble(lonDestino.Text));
+            var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
 
-            //Map.OpenAsync(location, options);
-            
+            Xamarin.Essentials.Map.OpenAsync(location, options);
+
         }
 
         protected override async void OnAppearing()
@@ -131,6 +150,8 @@ namespace ABMeter.Views.Home
             base.OnAppearing();
             //your code here;
             Position position = await GetLocation();
+            latOrigen.Text = position.Latitude.ToString("0.000000");
+            lonOrigen.Text = position.Longitude.ToString("0.000000");
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMeters(500)));
         }
 

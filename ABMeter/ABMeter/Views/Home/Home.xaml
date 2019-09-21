@@ -12,7 +12,7 @@
                     <Label x:Name="lonOrigen" />
                 </StackLayout>
                 <StackLayout Padding="5, 10, 5, 0" Spacing="5" VerticalOptions="Center">
-                    <Label Text="Destino" FontAttributes="Bold" FontSize="20" />
+                    <Label Text="Destino (Mantén presionado el mapa)" FontAttributes="Bold" FontSize="20" />
                     <!--<Entry x:Name="latDestino" Placeholder="Latitud" />
                     <Entry x:Name="lonDestino" Placeholder="Longitud" />-->
                     <Label x:Name="latDestino" Text="0" />

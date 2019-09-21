@@ -478,30 +478,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jhoan.gamarra\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/david/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter\\ABMeter.csproj",
+      "projectUniqueName": "/Users/david/Projects/ABMeter/ABMeter/ABMeter/ABMeter.csproj",
       "projectName": "ABMeter",
-      "projectPath": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter\\ABMeter.csproj",
-      "packagesPath": "C:\\Users\\jhoan.gamarra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter\\obj\\",
+      "projectPath": "/Users/david/Projects/ABMeter/ABMeter/ABMeter/ABMeter.csproj",
+      "packagesPath": "/Users/david/.nuget/packages/",
+      "outputPath": "/Users/david/Projects/ABMeter/ABMeter/ABMeter/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jhoan.gamarra\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/david/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

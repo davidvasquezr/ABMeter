@@ -1082,34 +1082,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jhoan.gamarra\\.nuget\\packages\\": {}
+    "/Users/david/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter.iOS\\ABMeter.iOS.csproj",
+      "projectUniqueName": "/Users/david/Projects/ABMeter/ABMeter/ABMeter.iOS/ABMeter.iOS.csproj",
       "projectName": "ABMeter.iOS",
-      "projectPath": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter.iOS\\ABMeter.iOS.csproj",
-      "packagesPath": "C:\\Users\\jhoan.gamarra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter.iOS\\obj\\",
+      "projectPath": "/Users/david/Projects/ABMeter/ABMeter/ABMeter.iOS/ABMeter.iOS.csproj",
+      "packagesPath": "/Users/david/.nuget/packages/",
+      "outputPath": "/Users/david/Projects/ABMeter/ABMeter/ABMeter.iOS/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\jhoan.gamarra\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/david/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "xamarinios10"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter\\ABMeter.csproj": {
-              "projectPath": "C:\\Users\\jhoan.gamarra\\Documents\\Visual Studio 2017\\Projects\\ABMeter\\ABMeter\\ABMeter\\ABMeter.csproj"
+            "/Users/david/Projects/ABMeter/ABMeter/ABMeter/ABMeter.csproj": {
+              "projectPath": "/Users/david/Projects/ABMeter/ABMeter/ABMeter/ABMeter.csproj"
             }
           }
         }
