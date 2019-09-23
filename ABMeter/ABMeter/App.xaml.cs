@@ -41,12 +41,16 @@ namespace ABMeter
         {
             InitializeComponent();
 
-            MainPage = new CustomNavigationPage(new Home());
-            //MainPage = new NavigationPageGradientHeader(new MainPage())
-            //{
-            //    LeftColor = Color.FromHex("#109F8D"),
-            //    RightColor = Color.FromHex("#36ED81")
-            //};
+            //MainPage = new CustomNavigationPage(new Home());
+
+            MainPage = new NavigationPageGradientHeader(new Home())
+            {
+                LeftColor = Color.FromHex("#00838f"),
+                RightColor = Color.FromHex("#00838f"),
+                BarTextColor = Color.White
+                
+            };
+            
         }
 
         protected override void OnStart()

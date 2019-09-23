@@ -1,4 +1,5 @@
 ﻿using ABMeter.Views.NavPage;
+using Plugin.LocalNotifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace ABMeter.Views.Home
 	{
         bool isStart;
         public DateTime TimeStart { get; set; }
+        public DateTime TimeEnd { get; set; }
 
         public Home()
 		{
@@ -94,11 +96,14 @@ namespace ABMeter.Views.Home
                         //Calcula las cordenadas
                         double kms = Location.CalculateDistance(origin, destination, DistanceUnits.Kilometers);
                         lblDistance.Text = kms.ToString("0.000");
+
                         if (kms < 0.01)
                         {
                             //Quiere decir que llego lo mas cercano posible al punto
                             isStart = false;
-                            await this.DisplayAlert("Llegaste", "Que bien perro. " + DateTime.Now.TimeOfDay, "Cerrar");
+                            //await this.DisplayAlert("Llegaste", "Que bien perro. " + DateTime.Now.TimeOfDay, "Cerrar");
+                            TimeEnd = DateTime.Now;
+                            CrossLocalNotifications.Current.Show("Llegaste", "Tu tiempo fue: " + (TimeEnd - TimeStart));
                         }
                     }
                 }
@@ -124,8 +129,9 @@ namespace ABMeter.Views.Home
 
         private void Btn_Clicked(object sender, EventArgs e)
         {
+            TimeStart = DateTime.Now;
             isStart = true;
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
                 // Do something
                 CalculateLocation();
